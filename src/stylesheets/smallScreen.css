@@ -1,0 +1,170 @@
+@media screen and (max-width: 639px) {
+    .title{
+        font-size: 8vw;
+        -webkit-text-stroke: 0.1vw white;
+        -webkit-text-fill-color: rgb(102, 7, 47);
+      }
+      .smaller-title{
+        font-size: 3vw;
+        -webkit-text-stroke: 0.1vw white;
+        -webkit-text-fill-color: rgb(102, 7, 47);
+      }
+      .title-left{
+        font-size: 8vw;
+        -webkit-text-stroke: 0.1vw white;
+        -webkit-text-fill-color: rgb(102, 7, 47);
+        margin-left: 1vw;
+        text-align: left;
+      }
+      .title-left img{
+        width: 5vw;
+        height: 5vw;
+      }
+      .nav{
+        top: 0;
+        width: 100vw;
+        background-color: rgb(248, 242, 232);
+        font-size: 3vw;
+      }
+      .cardsArea{
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        align-items: center;
+      }
+      
+      .menuCard{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        font-size: 3vw;
+        font-weight: bold;
+        padding-top: 2vw;
+        color: aliceblue ;
+        width: 80%;
+        height: fit-content;
+        max-height: fit-content;
+        box-shadow: 0.5vw 0.5vw 0.5vw rgb(97, 97, 100);
+        border-style: solid;
+        border-color: wheat;
+      
+      
+      }
+      .dealCardArea{
+        display: grid;
+        grid-template-columns: 50vw, 50vw;
+        justify-content: center;
+      }
+      .dealCard{
+        background-color: rgb(184, 63, 93);
+        border-radius: 15px;
+        border-style: solid;
+        border-color: wheat;
+        font-size: 3vw;
+        height: 100%;
+        width: 95%;
+        display: inline-block;
+        margin-top: 4vh;
+        margin-bottom: 1vw;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+      }
+      .drinks-card{
+        margin:3vw;
+        background-color: rgb(184, 63, 93);
+        color: #ffffff;
+        text-align: left;
+        display: inline-block;
+        font-size: 3vw;
+        border-style: solid;
+        border-color: aliceblue;
+        width: fit-content;
+        padding: 1.5vw;
+        box-shadow: 0.5vw 0.5vw 1vw 1vw #ffffff56;
+      }
+      .drinks{
+        margin: 2.5vw 
+      }
+      .viewButton{
+        width: 50%;
+        border-radius: 15px;
+        padding-left: 1.5vw;
+        padding-right: 1.5vw;
+        border-style: solid;
+        border-color: #202020;
+        align-self: center;
+        background-color:rgb(240, 194, 208);
+      }
+      input{
+        width: 30vw;
+      }
+      
+      .contactContent{
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+      }
+      .aboutDetails{
+        text-align: left;
+        margin-top: 4vw;
+        font-size: 1.5vw;
+        display: inline-block;
+      }
+      .hours-text, .hours-time{
+          font-size: 3.5vw;
+      }
+      .hours-time, .hours-text{
+        text-align: center;
+      }
+      .about-img{
+        width: 100%;
+      }
+      .fb-link{
+          font-size: 4.5vw;
+      }
+      .hours-title{
+          font-size: 5vw;
+      }
+      .contactDetails{
+        grid-column-start: 2;
+        text-align: left;
+        margin-top: 5vh;
+        font-size: 1.5vw;
+      }
+      .contactImage{
+        width: 50%;
+      }
+      .userDetails{
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+      
+      }
+      .accountHeader{
+        display: grid;
+        grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+        
+      }
+      .logout{
+        grid-column-start: 5;
+        width: 60%;
+        height: 50%;
+        background-color: rgb(183, 55, 85);
+        border-color: #ffffff;
+        color: #ffffff;
+        font-size: 1.5vw;
+        margin: 1vw;
+      }
+      .editButton, .deleteButton{
+        margin-top: 10vw;
+        background-color: rgb(183, 55, 85);
+        border-color: #ffffff;
+        color: #ffffff;
+        font-size: 1.5vw;
+        margin-left: 1vw;
+      }
+
+      .scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+
+}

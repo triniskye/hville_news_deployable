@@ -1,0 +1,221 @@
+
+@media screen and (min-width: 640px) {  
+  .title{
+    font-size: 4vw;
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: rgb(102, 7, 47);
+  }
+  .smaller-title{
+    font-size: 2.5vw;
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: rgb(102, 7, 47);
+  }
+  .title-left{
+    font-size: 3.5vw;
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: rgb(102, 7, 47);
+    margin-left: 1vw;
+    text-align: left;
+  }
+  .title-left img{
+    width: 4vw;
+    height: 4vw;
+  }
+  .nav{
+    top: 0;
+    width: 100vw;
+    background-color: rgb(248, 242, 232);
+    font-size: 1.5vw;
+  }
+  .nav-brand{
+    font-size: 3.5vw;
+  }
+  .cardsArea{
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+  
+  }
+  
+  .menuCard{
+    margin: 1vw;
+    font-size: 1vw;
+    font-weight: bold;
+    padding-top: 2vw;
+    color: aliceblue ;
+    width: 18vw;
+    line-height: 1.5vw;
+    height: fit-content;
+    max-height: fit-content;
+    box-shadow: 0.5vw 0.5vw 0.5vw rgb(97, 97, 100);
+    border-style: solid;
+    border-color: wheat;
+  
+  
+  }
+  .menuCard:hover{
+    animation: grow 1.5s infinite linear;
+  }
+  .dealCardArea{
+    display: grid;
+    grid-template-columns: 50vw, 50vw;
+    justify-content: center;
+  }
+  .dealCard{
+    background-color: rgb(184, 63, 93);
+    border-radius: 15px;
+    border-style: solid;
+    border-color: wheat;
+    font-size: 2vw;
+    width: 90%;
+    display: inline-block;
+    margin-top: 4vh;
+    margin-bottom: 1vw;
+  }
+  .cardImage{
+    align-self: center;
+    width: 2vw;
+    height: 2vw;
+  }
+  .drinks-card{
+    margin:3vw;
+    background-color: rgb(184, 63, 93);
+    color: #ffffff;
+    text-align: left;
+    display: inline-block;
+    font-size: 1.5vw;
+    border-style: solid;
+    border-color: aliceblue;
+    /* border-image: conic-gradient(from var(--angle), red, yellow, red, yellow, red) 1; */
+    animation: 5s rotate linear infinite;
+    width: fit-content;
+    padding: 1.5vw;
+    /* box-shadow: 4px -4px 15px 0px #ff1f8f, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0,0,0,0); */
+    box-shadow: 0.5vw 0.5vw 1vw 1vw #ffffff56;
+  }
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+  
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  } 
+  .drinks{
+    margin-left: 2vw;
+  }
+  
+  .viewButton{
+    border-radius: 15px;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    border-style: solid;
+    border-color: #202020;
+    align-self: center;
+    background-color:rgb(240, 194, 208);
+  }
+  input{
+    width: 30vw;
+  }
+  .about-img{
+    width: 80%;
+  }
+  .fb-link{
+    font-size: 1.5vw;
+}
+  .contactContent{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+  }
+  .aboutDetails{
+    margin-top: 4vw;
+    font-size: 1.5vw;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+  }
+  
+  .contactDetails{
+    grid-column-start: 2;
+    text-align: left;
+    margin-top: 5vh;
+    font-size: 1.5vw;
+  }
+  .contactImage{
+    width: 50%;
+  }
+  .userDetails{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+  
+  }
+  .email, .name{
+    font-size: 2vw;
+    margin-top: 5vw;
+  }
+  .accountHeader{
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+    
+  }
+  .logout{
+    grid-column-start: 5;
+    width: 60%;
+    height: 50%;
+    background-color: rgb(183, 55, 85);
+    border-color: #ffffff;
+    color: #ffffff;
+    font-size: 1.5vw;
+    margin: 1vw;
+  }
+  .editButton, .deleteButton{
+    margin-top: 10vw;
+    background-color: rgb(183, 55, 85);
+    border-color: #ffffff;
+    color: #ffffff;
+    font-size: 1.5vw;
+    margin-left: 1vw;
+  }
+  
+  @keyframes grow{
+    0%{
+      box-shadow: 0.5vw 0.5vw 0.5vw rgb(97, 97, 100);
+      
+    }
+    50%{
+      box-shadow:1vw 1vw 1vw rgb(97, 97, 100);
+      width: 18.5vw;
+    }
+    100%{
+      box-shadow: 0.5vw 0.5vw 0.5vw rgb(97, 97, 100);
+    }
+  }
+  .scroll::-webkit-scrollbar {
+    display: block;
+    width: 1vw;
+  
+  }
+  .scroll::-webkit-scrollbar-track {
+    background-color: #b18e8e;
+    margin-top: -200px;
+    margin-bottom: -100px;
+  
+  }
+    
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(248, 76, 116);
+    border-style: solid;
+    border-color: rgb(239, 162, 207);
+  }
+  
+  .scroll::-webkit-scrollbar-track-piece:end {
+    background-color:rgb(240, 182, 211);
+  }
+  
+  .scroll::-webkit-scrollbar-track-piece:start {
+    background-color: rgb(240, 182, 211);
+  }
+
+
+}
