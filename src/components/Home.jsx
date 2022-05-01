@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import DealCard from './DealCard';
 import Scroll from './Scroll';
+import axios from 'axios';
 
 const Home = () => {
   const [mealDeals, setMealDeals] = useState([])
 
+
   useEffect(()=>{
-    fetch("http://localhost:5000/deals")
-    .then(res => res.json())
-    .then((data) => {
-      setMealDeals(data);
-      console.log(data)
-    })
-    .catch(err=>console.log(err))
+    getDeals()
   }, [])
+  const getDeals = async()=>{
+    try{
+      const response = await axios.get(`${process.env.REACT_APP_API}/deals`)
+      setMealDeals(response.data)
+    }
+    catch(err){
+      console.log(`error while fetching deals ===> ${err}`)
+    }
+  }
 
  const cards = mealDeals.map((item)=>{
    return(
-     <div key={item.id}>     
+     <div key={item._id}>     
      <DealCard item={item}/>
      </div>
    )
@@ -27,11 +32,11 @@ const Home = () => {
     <div>
       
       <h1 className="title">Harrisville News & General Store</h1>
-     <Scroll height={79}>
+     <Scroll height={75}>
       {/* Drinks */}
       
       <div className='drinks-card'>
-      <h2 className='smaller-title'>New Items!</h2>
+      <h2 className='smaller-title'>Cold Drinks!</h2>
         <div className='drinks'>
           <p><b>Smoothies:</b></p>
           <p><i>Berry Go Round: </i>$6 Large, $4 Regular</p>

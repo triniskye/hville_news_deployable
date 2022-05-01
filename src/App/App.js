@@ -1,4 +1,6 @@
 import React, {useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../stylesheets/index.css';
 import '../stylesheets/bigScreen.css';
 import '../stylesheets/smallScreen.css';
@@ -11,46 +13,56 @@ import Signup from '../components/Signup';
 import Account from '../components/Account';
 import About from '../components/About';
 import NavBar from '../components/NavBar';
+import { authActions } from './store/auth-slice';
+import { useDispatch } from 'react-redux';
 
 
 
 function App(){
 const [loggedIn, setLoggedIn] = useState(false);
-const [user, setUser] = useState([]);
+const dispatch = useDispatch();
 
+function setNewUser(data){
 
-function setNewUser(newUserArr){
-  setUser(newUserArr.user);
-  console.log("user",newUserArr.user)
-  setLoggedIn(true)
+  const id = data.id
+  const name = data.name;
+  const email = data.email;
+  dispatch(authActions.LoginUser({
+    id,
+    name,
+    email
+  }));
+  setLoggedIn(true);
+  sessionStorage.setItem("my_hville_app_usery_user", JSON.stringify(data))
 }
-
-useEffect(() => {
-  const userData = window.sessionStorage.getItem('my_app_user');
-  setUser(JSON.parse(userData));
-  console.log("reload", userData);
-}, []);
-
-useEffect(() => {
-  deleteFromStorage();
-  window.sessionStorage.setItem('my_app_user', JSON.stringify(user));
-  console.log("updated state", user);
-}, [user]);
-
-
-function deleteFromStorage(){
-  window.sessionStorage.removeItem('my_app_user')
-}
-function setJwtToken(token) {
+function setToken(token){
+  dispatch(authActions.setJWT(token));
   sessionStorage.setItem("jwt", token)
 }
+
+useEffect(() => {
+  const userData = JSON.parse(window.sessionStorage.getItem('my_hville_app_usery_user'));
+  const jwt = sessionStorage.getItem("jwt");
+
+  if((userData !== null) && (jwt !== null)){
+    setNewUser(userData); 
+  }
+
+}, []);
+
 function getJwtToken() {
   return sessionStorage.getItem("jwt")
 }
-const jwtToken = getJwtToken();
-if (!jwtToken) {
-  console.log("/login")
+
+
+function deleteFromStorage(){
+  window.sessionStorage.removeItem('my_hville_app_usery_user')
+  window.sessionStorage.removeItem("jwt")
+  
 }
+
+
+
   return (
     <div className="App">
  
@@ -59,7 +71,7 @@ if (!jwtToken) {
         <NavBar/>
       </div>
         <Router> 
-
+        <ToastContainer />
           <Routes>                                                                                            
 
             <Route exact path="/" element={<Home loggedIn = {loggedIn}/>}/>
@@ -68,13 +80,13 @@ if (!jwtToken) {
 
             <Route path="/contact" element={<Contact/>}/>
 
-            <Route path="/signup" element={<Signup setToken = {setJwtToken} setNewUser = {setNewUser} />}/>
+            <Route path="/signup" element={<Signup setToken = {setToken} setNewUser = {setNewUser} />}/>
 
-            <Route path="/login" element={<Login setToken = {setJwtToken} setNewUser = {setNewUser} />}/>
+            <Route path="/login" element={<Login setNewUser = {setNewUser} setToken={setToken} />}/>
 
             <Route path="/about" element={<About />}/>
 
-            <Route path="/account" element={<Account getToken={getJwtToken} setNewUser = {setNewUser} clearStorage = {deleteFromStorage} user={user} loggedIn = {loggedIn}/>}/>
+            <Route path="/account" element={<Account getToken={getJwtToken} setNewUser = {setNewUser} clearStorage = {deleteFromStorage} />}/>
 
             
 

@@ -1,41 +1,47 @@
 import React, {useState, useEffect} from "react";
 import MenuCard from "./MenuCard";
 import ShowCard from "./ShowCard";
+import UpdateItemForm from "./UpdateItemForm";
+import NewItem from "./NewItem";
 import Scroll from "./Scroll";
-
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 function Menu(props){
-
+    const user = useSelector((state)=> state.auth.userDetails);
     const [items, setItems] = useState([]);
     const [viewModal, setViewModal] = useState(false);
-    const [id, setId] = useState(0)
+    const [viewForm, setViewForm] = useState(false);
+    const [viewNewForm, setViewNewForm] = useState(false);
+    const [id, setId] = useState("");
+    
   useEffect(() => {
-    fetch("http://localhost:5000/menu_items")
-      .then(res => res.json())
-      .then((data) => {
-        console.log("data", data)
-        setItems(data)
-      })
-      .catch(err => setItems(`Errors: ${err}`))
+    start()
   }, []);
+async function start(){
+  const response = await axios.get(`${process.env.REACT_APP_API}/menu_items`)
+
+  setItems(response.data)
+}
 
   let burgerCards = items.map((item) => {
     switch(item.food_type){
       case "burger":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
   });
   let rollCards = items.map((item) => {
+
     switch(item.food_type){
       case "roll":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -44,8 +50,8 @@ function Menu(props){
     switch(item.food_type){
       case "hot_box":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -54,8 +60,8 @@ function Menu(props){
     switch(item.food_type){
       case "fish":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -64,8 +70,8 @@ function Menu(props){
     switch(item.food_type){
       case "kids_meal":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -74,8 +80,8 @@ function Menu(props){
     switch(item.food_type){
       case "meal_deal":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={"meal-deal-menu-card"}  getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -84,8 +90,8 @@ function Menu(props){
     switch(item.food_type){
       case "chicken":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -94,8 +100,8 @@ function Menu(props){
     switch(item.food_type){
       case "chips":
         return (
-          <div key={item.id}>
-            <MenuCard getToken={props.getToken} item={item} toggle={toggle} changeId={changeId}/>
+          <div key={item._id}>
+            <MenuCard className={""} getToken={props.getToken} item={item} toggle={toggle} toggleForm={toggleForm} changeId={changeId}/>
           </div>
         )      
     }
@@ -103,7 +109,12 @@ function Menu(props){
   function toggle(){
     setViewModal(!viewModal);
   }
-
+  function toggleForm(){
+    setViewForm(!viewForm);
+  }
+  function toggleNewForm(){
+    setViewNewForm(!viewNewForm);
+  }
   function changeId(newId){
     setId(newId);
   }
@@ -111,9 +122,11 @@ function Menu(props){
     return(
         
         <div>
-            <h1 className="title">Menu</h1>
+            <h1><span className="title">Menu</span><span>{user.name ? <button className="newButton" onClick={toggleNewForm}>Create New Item</button> : <></>}</span></h1>
             <Scroll height={80}>
             {viewModal ?<ShowCard viewModal={viewModal} id={id} toggle={toggle}/>: <></>}
+            {viewForm ? <UpdateItemForm viewForm={viewForm} id={id} toggleForm={toggleForm}/> : <></>}
+            {viewNewForm? <NewItem viewNewForm={viewNewForm} toggleForm={toggleNewForm}/> : <></>}
             {/* burgers */}
             <h2 className="title-left">Burgers <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/hamburger_1f354.png"/></h2>
             <div className="cardsArea">

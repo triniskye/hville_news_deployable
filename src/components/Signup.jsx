@@ -1,53 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import {toast} from "react-toastify";
 
 const Signup = (props) => {
-    const navigate = useNavigate();
+    const nav = useNavigate();
 
-    const [fName, setFName] = useState("");
-    const [lName, setLName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function submitForm(e) {
+    async function submitForm(e){
         e.preventDefault()
-       
-        fetch('http://localhost:5000/signup', {
-        method: "POST",
-        body: JSON.stringify({
-            first_name : fName,
-            last_name : lName,
-            email : email,
-            password : password
-        }),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-    .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        else{
-            throw new Error('Something went wrong');
-        }
-        
-      })
-        .then((json) => {
-            console.log(json);
-            props.setNewUser(json);
-            props.setToken(json.jwt);
-            console.log("success")
-            navigate('/');
-        })
-        .catch(err => console.log(err)
-        );
+        try{
+            const response = await axios.post(`${process.env.REACT_APP_API}/register`, {
+                name: name,
+                email: email,
+                password: password
+            });
 
+            toast.success("Success!");
+            nav("/");
+        }
+        catch(err){
+            console.log(`register error: ${err}`)
+            if(err.response.status === 400){
+                toast.error(`error: ${err.response.data}`)
+            }
+        }
+    } 
 
-    }
-    function handleFName(e) {
-        setFName(e.target.value)
-    }
-    function handleLName(e) {
-        setLName(e.target.value)
+    function handleName(e) {
+        setName(e.target.value)
     }
     function handleEmail(e) {
         setEmail(e.target.value)
@@ -62,9 +46,7 @@ const Signup = (props) => {
 
             <form onSubmit={submitForm}>
                 <label>First Name:</label><br />
-                <input placeholder="Gertrude" onChange={handleFName}></input><br />
-                <label>Last Name:</label><br />
-                <input placeholder="Bostock" onChange={handleLName}></input><br />
+                <input placeholder="Gertrude" onChange={handleName}></input><br />
                 <label>Email:</label><br />
                 <input type="email" placeholder="gbostock@emailprovider.com" onChange={handleEmail}></input><br />
                 <label>Password:</label><br />

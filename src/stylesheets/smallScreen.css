@@ -5,11 +5,15 @@
         -webkit-text-fill-color: rgb(102, 7, 47);
       }
       .smaller-title{
-        font-size: 3vw;
+        font-size: 4vw;
         -webkit-text-stroke: 0.1vw white;
         -webkit-text-fill-color: rgb(102, 7, 47);
       }
       .title-left{
+        position: sticky;
+        top: 0;
+        background-color: #202020;
+        padding: 2vh;
         font-size: 8vw;
         -webkit-text-stroke: 0.1vw white;
         -webkit-text-fill-color: rgb(102, 7, 47);
@@ -30,8 +34,12 @@
         display: grid;
         grid-template-columns: 50vw 50vw;
         align-items: center;
+
       }
-      
+      .showImg{
+        width: 0;
+        height: 0;
+      }
       .menuCard{
         margin-left: 10%;
         margin-right: 10%;
@@ -42,8 +50,7 @@
         padding-top: 2vw;
         color: aliceblue ;
         width: 80%;
-        height: fit-content;
-        max-height: fit-content;
+        max-height:fit-content;
         box-shadow: 0.5vw 0.5vw 0.5vw rgb(97, 97, 100);
         border-style: solid;
         border-color: wheat;
@@ -54,6 +61,8 @@
         display: grid;
         grid-template-columns: 50vw, 50vw;
         justify-content: center;
+        
+        
       }
       .dealCard{
         background-color: rgb(184, 63, 93);
@@ -100,8 +109,7 @@
       }
       
       .contactContent{
-        display: grid;
-        grid-template-columns: 50vw 50vw;
+        display: inline-block;
       }
       .aboutDetails{
         text-align: left;
@@ -111,15 +119,14 @@
       }
       .hours-text, .hours-time{
           font-size: 3.5vw;
-      }
-      .hours-time, .hours-text{
-        text-align: center;
+          text-align: center;
       }
       .about-img{
         width: 100%;
       }
       .fb-link{
           font-size: 4.5vw;
+          text-align: center;
       }
       .hours-title{
           font-size: 5vw;
@@ -131,11 +138,14 @@
         font-size: 1.5vw;
       }
       .contactImage{
-        width: 50%;
+        margin-top: 5vh;
+        height: 40vh;
       }
       .userDetails{
+        margin-top: 10vh;
         display: grid;
-        grid-template-columns: 50vw 50vw;
+        grid-template-columns: 100vw;
+        grid-template-rows: 25vh 25vh;
       
       }
       .accountHeader{
@@ -145,20 +155,40 @@
       }
       .logout{
         grid-column-start: 5;
-        width: 60%;
-        height: 50%;
+        width: fit-content;
+        height: fit-content;
         background-color: rgb(183, 55, 85);
         border-color: #ffffff;
         color: #ffffff;
-        font-size: 1.5vw;
+        font-size: 4vw;
         margin: 1vw;
       }
-      .editButton, .deleteButton{
-        margin-top: 10vw;
+      .login-form{
+        margin-top: 5vh;
+      }
+      .login-form input{
+        width: 80vw;
+        font-size: 4vw;
+      }
+      .login-form label, .login-form button, .login-form p{
+        font-size: 4vw;
+      }
+      .login-form button{
         background-color: rgb(183, 55, 85);
         border-color: #ffffff;
         color: #ffffff;
-        font-size: 1.5vw;
+      }
+      .vendor-message a{
+        color: rgb(184, 63, 93);
+      }
+      .vendor-message span{
+        font-size: 4vw;
+      }
+      .editButton, .deleteButton{
+        background-color: rgb(183, 55, 85);
+        border-color: #ffffff;
+        color: #ffffff;
+        font-size: 4vw;
         margin-left: 1vw;
       }
 
@@ -166,5 +196,10 @@
         display: none;
       }
 
+      .meal-deal-menu-card{
+        min-height: 20vh;
+        height: 20vh;
+        max-height: fit-content;
+      }
 
 }

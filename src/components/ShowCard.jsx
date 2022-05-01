@@ -1,24 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import {Modal, Button} from 'react-bootstrap';
+import axios from 'axios';
 
 const ShowCard = (props) => {
     const [item, setItem] = useState({})
     useEffect(()=>{
-        fetch(`http://localhost:5000/menu_items/${props.id}`)
-        .then(res => res.json())
-        .then((data) => {
-            setItem(data)
-        })
-        .catch(err => console.log(err))
+        getItemInfo();
+        
     }, []);
+    const getItemInfo = async()=>{
+      try{
+        const response = await axios.get(`${process.env.REACT_APP_API}/menu_items/${props.id}`)
+        setItem(response.data);
+        
+      }
+      catch(err){
+        console.log(`error while getting individual item ===> ${err} `)
+      }
+    }
+
   return (
     <div>
       <Modal show={props.viewModal}>
         <Modal.Header>
-          <Modal.Title><img src={item.img_source}/>{item.title} <br/> ${item.price}</Modal.Title>
+          <Modal.Title>{item.title || "Loading..."} <br/> ${item.price || "Loading..."}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            {item.title} Ingredients:<br/>
+           <b>{item.title || "Loading..."} Ingredients:<br/></b> 
             {item.ingredients}
         </Modal.Body>
         <Modal.Footer>

@@ -35,7 +35,21 @@
     grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
   
   }
-  
+  .login-form{
+    margin-top: 4vh;
+  }
+  .login-form button{
+    background-color: rgb(183, 55, 85);
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  .vendor-message span{
+    font-size: 2vw;
+
+  }
+  .vendor-message a{
+    color: rgb(184, 63, 93);
+  }
   .menuCard{
     margin: 1vw;
     font-size: 1vw;

@@ -17,9 +17,8 @@ function NavBar(){
                             <Nav.Link href="/menu">Menu |</Nav.Link>
                             <Nav.Link href="/contact">Contact Us |</Nav.Link>
                             <Nav.Link href="/about">About |</Nav.Link>
-                            <NavDropdown title="Vendor Login" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="/account" style={{fontSize: "1.25vw"}}>Overview</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link href="/account">Vendor</Nav.Link>
+
 
                         </Nav>
                         
